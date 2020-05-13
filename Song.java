@@ -4,10 +4,13 @@ public class Song {
 	
 	private String songName;
 	private String path;
-	private Integer songLength;
+	private String songAlbum;
 	
-	public Song(String path) {
+	public Song(String songName, String album, String path) {
+		this.songName = songName;
+		this.songAlbum = album;
 		this.path = path;
+		
 	}
 	
 	public String getSongName() {
@@ -18,8 +21,13 @@ public class Song {
 		return path;
 	}
 	
-	public Integer getSongLength() {
-		return songLength;
+	public String getAlbum() {
+		return songAlbum;
+	}
+	
+	@Override
+	public String toString() {
+		return songName + "\t" + songAlbum + "\t" + path;
 	}
 
 }
