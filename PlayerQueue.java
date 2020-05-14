@@ -34,8 +34,13 @@ public class PlayerQueue {
 	}
 	
 	public Song getNextSong() {
-		currentSongIndex++;
-		return iterator.next();
+		if(iterator.hasNext()) {
+			currentSongIndex++;
+			return iterator.next();
+		}
+		else {
+			return null;
+		}
 	}
 	public Song getLastSong() {
 		Iterator<Song> newiterator = songList.iterator();

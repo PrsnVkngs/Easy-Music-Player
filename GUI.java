@@ -103,9 +103,6 @@ public class GUI {
 			public void actionPerformed(ActionEvent arg0) {
 				increaseProgress(songProgress);
 				songQueue.getNextSong();
-				if(isPaused) {
-					
-				}
 			}
 		});
 		nextSongB.setBounds(305, 177, 101, 23);
@@ -193,11 +190,6 @@ public class GUI {
 
 	}
 	
-	
-	
-	public JLabel createNewSongLabel(String name, String album, String path) {
-		return new JLabel(name + "\t" + album + "\t" + path);
-	}
 
 	public void decreaseProgress(JProgressBar prog) {
 		if (prog.getValue() <= 0) {

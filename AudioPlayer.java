@@ -29,7 +29,7 @@ public class AudioPlayer implements Runnable{
 	public AudioPlayer(String fileName) {
 		this.songPath = fileName;
 		
-		songThread = new Thread("Song") {
+		songThread = new Thread() {
 			public void run() {
 				playSoundH();
 			}
