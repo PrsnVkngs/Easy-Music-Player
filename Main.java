@@ -8,8 +8,6 @@ public class Main {
 	
 		GUI gui = new GUI();
 		gui.createGUI();
-	
-		
 		
 		//this code must be altered to allow for the user to add songs at their own will. 
 		//must take input from the gui and add them as songs. 

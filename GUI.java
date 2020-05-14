@@ -26,6 +26,7 @@ public class GUI {
 	Map<String, Song> songsInQueue = new HashMap<String, Song>();
 	private JTable songTable;
 	private static boolean isPaused = false;
+	Song currentSong = null;
 	
 	
 	public static boolean isSongPlaying() {
@@ -101,9 +102,14 @@ public class GUI {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				increaseProgress(songProgress);
+				songQueue.getNextSong();
+				if(isPaused) {
+					
+				}
 			}
 		});
 		nextSongB.setBounds(305, 177, 101, 23);
+		
 		panel.add(nextSongB);
 
 		previousSongB.setBounds(26, 177, 114, 23);
@@ -119,12 +125,17 @@ public class GUI {
 			public void actionPerformed(ActionEvent arg0) {
 				if (songStatus.getText().equals("Song Status: Playing")) {
 					songStatus.setText("Song Status: Paused");
-					isPaused = true;
+					currentSong.getAudioPlayer().setPaused(true);
 				} else if (songStatus.getText().equals("Song Status: Paused")) {
 					songStatus.setText("Song Status: Playing");
-					isPaused = false;
+					currentSong.getAudioPlayer().setPaused(false);
+					currentSong.getAudioPlayer().playSound();
+					frame.validate();
 				} else {
 					songStatus.setText("Song Status: Playing");
+					currentSong.getAudioPlayer().setPaused(false);
+					currentSong.getAudioPlayer().playSound();
+					frame.validate();
 				}
 			}
 		});
@@ -170,6 +181,10 @@ public class GUI {
 				songTableModel.addRow(new String[] {songName, songAlbum, songPath});
 				
 				songQueue.addSong(new Song(songName, songAlbum, songPath));
+				
+				if(currentSong == null) {
+					currentSong = new Song(songName, songAlbum, songPath);
+				}
 				
 			}
 		});

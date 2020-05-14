@@ -1,36 +1,53 @@
 package project;
 
 import java.util.Iterator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.LinkedList;
 
 public class PlayerQueue {
 	
-	Queue<Song> songQueue = new PriorityQueue<Song>();
+	//PriorityQueue<Song> songQueue = new PriorityQueue<Song>();
+	LinkedList<Song> songList = new LinkedList<Song>();
 	
 	Iterator<Song> iterator;
 	
+	int currentSongIndex;
+	
 	public PlayerQueue() {
-		iterator = songQueue.iterator();
+		this.iterator = songList.iterator();
+		currentSongIndex = 0;
 	}
 	
 	public void addSong(Song song) {
-		songQueue.add(song);
+		songList.add(song);
 	}
 	
 	public boolean removeSong(Song song) {
 		try {
-			songQueue.remove(song);
+			songList.remove(song);
 			return true;
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			System.out.println("Couldn't remove song");
 			return false;
 		}
 	}
 	
 	public Song getNextSong() {
+		currentSongIndex++;
 		return iterator.next();
+	}
+	public Song getLastSong() {
+		Iterator<Song> newiterator = songList.iterator();
+		for(int z = 0; z < currentSongIndex-1; z++) {
+			newiterator.next();
+		}
+		currentSongIndex--;
+		return newiterator.next();		
+	}
+	
+	public Song getCurrentSong() {
+		return songList.get(currentSongIndex);
 	}
 	
 }

@@ -5,12 +5,13 @@ public class Song {
 	private String songName;
 	private String path;
 	private String songAlbum;
+	private AudioPlayer playerObject;
 	
 	public Song(String songName, String album, String path) {
 		this.songName = songName;
 		this.songAlbum = album;
 		this.path = path;
-		
+		playerObject = new AudioPlayer(path);
 	}
 	
 	public String getSongName() {
@@ -28,6 +29,10 @@ public class Song {
 	@Override
 	public String toString() {
 		return songName + "\t" + songAlbum + "\t" + path;
+	}
+	
+	public AudioPlayer getAudioPlayer() {
+		return playerObject;
 	}
 
 }
