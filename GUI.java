@@ -21,6 +21,12 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
 
+/**
+ * 
+ * @author oskar
+ *
+ */
+
 public class GUI {
 
 	// protected static final Component Song = null;

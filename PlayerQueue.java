@@ -3,6 +3,12 @@ package project;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ * 
+ * @author oskar
+ *
+ */
+
 public class PlayerQueue {
 	
 	//PriorityQueue<Song> songQueue = new PriorityQueue<Song>();

@@ -1,5 +1,11 @@
 package project;
 
+/**
+ * 
+ * @author oskar
+ *
+ */
+
 public class Song {
 	
 	private String songName;

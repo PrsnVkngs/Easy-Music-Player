@@ -11,6 +11,12 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
+/**
+ * 
+ * @author oskar
+ *
+ */
+
 public class AudioPlayer implements Runnable{
 	
 	private final int BUFFER_SIZE = 128000;
