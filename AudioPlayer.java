@@ -10,7 +10,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
-//import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class AudioPlayer implements Runnable{
 	
@@ -25,6 +24,8 @@ public class AudioPlayer implements Runnable{
 	private boolean paused = false;
 	//private boolean isCurrentSong = false;
 	Thread songThread;
+	int songTime;
+	
 	
 	public AudioPlayer(String fileName) {
 		this.songPath = fileName;
@@ -48,10 +49,9 @@ public class AudioPlayer implements Runnable{
 	}
 	
 	
-	/**
-	 * @param filename the file name of the file that you wish to play passed as a String.
-	 */
+	
 	private void playSoundH() {
+		
 		String fileName = songPath;
 		try {
 			soundFile = new File(fileName);
@@ -87,15 +87,17 @@ public class AudioPlayer implements Runnable{
 		
 		
 		sourceLine.start();
+		
+		int songTime = 0;
 		int nBytesRead = 0;
 		byte[] abData = new byte[BUFFER_SIZE];
 		//sourceLine.stop();
 		
 		while(nBytesRead != -1) {
 			try {
-				paused = GUI.isSongPlaying();
+				this.paused = GUI.isPaused();
 				if(!paused) {
-					sourceLine.start();
+					sourceLine.start();					
 					nBytesRead = audioStream.read(abData, 0, abData.length);
 				}
 				else {
@@ -114,12 +116,16 @@ public class AudioPlayer implements Runnable{
 		sourceLine.close();
 	}
 	
+	public int getSongTime() {
+		return songTime/100;
+	}
+	
 	/**
 	 * 
 	 * @param p is true or false depending on whether or not you want to pause the song. True pauses the audio, while false resumes it.
 	 */
-	public void setPaused(boolean p) {
-		this.paused = p;
+	public void getIfPaused() {
+		
 	}
 
 

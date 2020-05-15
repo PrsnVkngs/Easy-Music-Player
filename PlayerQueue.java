@@ -39,6 +39,7 @@ public class PlayerQueue {
 			return iterator.next();
 		}
 		else {
+			System.out.println("There is no other song in Queue.");
 			return null;
 		}
 	}

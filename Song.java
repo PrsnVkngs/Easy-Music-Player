@@ -6,6 +6,7 @@ public class Song {
 	private String path;
 	private String songAlbum;
 	private AudioPlayer playerObject;
+	private int songLength = 381;
 	
 	public Song(String songName, String album, String path) {
 		this.songName = songName;
@@ -34,5 +35,11 @@ public class Song {
 	public AudioPlayer getAudioPlayer() {
 		return playerObject;
 	}
+	
+	public int getSongLength() {
+		return songLength;
+	}
+	
+	
 
 }
